@@ -34,15 +34,18 @@ public class GuiProxy extends Screen {
             this.clearAndInit();
         }).dimensions(x, startY, 200, 20).build());
         this.ipPort = new TextFieldWidget(textRenderer, x, startY + 24, 200, 20, Text.empty());
+        this.ipPort.setMaxLength(512);
         this.ipPort.setPlaceholder(Text.literal("e.g. 125.1.34.1:2555").formatted(Formatting.DARK_GRAY));
         this.ipPort.setText(ProxyServer.proxy.ipPort);
         this.addDrawableChild(ipPort);
         this.username = new TextFieldWidget(textRenderer, x, startY + 48, 200, 20, Text.empty());
+        this.username.setMaxLength(512);
         this.username.setPlaceholder(Text.literal(isSocks4 ? "User ID" : "Username").formatted(Formatting.DARK_GRAY));
         this.username.setText(ProxyServer.proxy.username);
         this.addDrawableChild(username);
         if (!isSocks4) {
             this.password = new TextFieldWidget(textRenderer, x, startY + 72, 200, 20, Text.empty());
+            this.password.setMaxLength(512);
             this.password.setPlaceholder(Text.literal("Password").formatted(Formatting.DARK_GRAY));
             this.password.setText(ProxyServer.proxy.password);
             this.addDrawableChild(password);
